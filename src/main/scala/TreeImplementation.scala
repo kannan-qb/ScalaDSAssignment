@@ -1,3 +1,4 @@
+import Main1.rootNode
 class TreeImplementation {
   def insert(treeNode: TreeNode, value: Int): Unit = {
     if (value < treeNode.value) {
@@ -19,18 +20,49 @@ class TreeImplementation {
       }
     }
   }
+  def delete(value:Int):Unit={
+    deleteKey(rootNode,value)
+  }
+  def deleteKey(rootNode:TreeNode, value: Int):TreeNode= {
+    if (rootNode == null) {
+      rootNode
+    }
+    if (value < rootNode.value) {
+      rootNode.left = deleteKey(rootNode.left, value)
+    }
+    else if (value > rootNode.value) {
+      rootNode.right = deleteKey(rootNode.right, value)
+    }
+    else {
+      if (rootNode.left == null) {
+        rootNode.right
+      }
+      else if (rootNode.right == null) {
+        rootNode.left
+      }
 
-//  def searchValue(treeNode:TreeNode, value: Int): TreeNode = {
-//    if (treeNode == null || treeNode.value == value) {
-//      treeNode
-//    }
-//    if (treeNode.value > value) {
-//      searchValue(treeNode.left, value)
-//    }
-//    searchValue(treeNode.right, value)
-//  }
-
-
+      rootNode.right = deleteKey(rootNode.right, minimum(rootNode.right))
+    }
+    rootNode
+  }
+  def search(treeNode: TreeNode,value:Int): Unit ={
+    if (treeNode==null){
+      println("Element is Not Present")
+    }else if(value==treeNode.value){
+      println("Element is Present")
+    }else if(value<treeNode.value){
+      search(treeNode.left,value)
+    }else{
+      search(treeNode.right,value)
+    }
+  }
+  def minimum(treeNode:TreeNode):Int={
+    var min=treeNode.value
+    while (treeNode.value!=null){
+      min=treeNode.left.value
+    }
+    min
+  }
   def traverseInOrder(treeNode: TreeNode): Unit = {
     if (treeNode != null) {
       traverseInOrder(treeNode.left)

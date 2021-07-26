@@ -15,6 +15,12 @@ object Main1 extends App{
   println()
   treeImplementation.traversePostOrder(rootNode)
   println()
+  println()
+  treeImplementation.search(rootNode,100)
+  println()
+  treeImplementation.traverseInOrder(rootNode)
+  treeImplementation.deleteKey(rootNode,9)
+  treeImplementation.traverseInOrder(rootNode)
   println(">>>>>>>>>>>>>>>>>>>>>>")
   println("HASH TABLE  IMPLEMENTATION")
   val hashTableImplementaion =new HashTableImplementaion[Int,String](Vector.empty)
@@ -22,8 +28,6 @@ object Main1 extends App{
   val a2 = a1.add(2,"Deepa")
   val a3 = a2.add(3,"Kannan")
   a1.get(2)
-
-
-
+  a1.remove(1)
 
 }

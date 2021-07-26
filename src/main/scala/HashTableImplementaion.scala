@@ -2,13 +2,12 @@ case class Entry[K, V](key: K, value: V)
 class HashTableImplementaion[K,V](entries:Vector[Vector[Entry[K,V]]]){
   def add(key: K, value: V): HashTableImplementaion[K, V] ={
     val idx = indexFor(key)
-    // if the table is empty, initialize and then run 'add' again
     if(entries.isEmpty) {
       init.add(key, value)
     } else {
       val chain = entries(idx)
       chain.indexWhere(_.key == key) match {
-        case -1 => // key not found
+        case -1 =>
           val e = Entry(key, value)
           new HashTableImplementaion(entries.updated(idx, e +: chain))
         case i =>
@@ -34,7 +33,4 @@ class HashTableImplementaion[K,V](entries:Vector[Vector[Entry[K,V]]]){
     val a: Option[V] =entries(idx).find(_.key == key).map(_.value)
      println(a)
   }
-
-
-
 }

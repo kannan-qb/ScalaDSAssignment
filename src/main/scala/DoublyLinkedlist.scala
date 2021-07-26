@@ -20,9 +20,9 @@ class DoublyLinkedlist[T] {
   def delete(itemtobeDeleted: T): Unit = {
     var currentNode: NodeofDoubly[T] = head
     while (currentNode != null && currentNode.data != itemtobeDeleted) {
-      currentNode = currentNode.next;
+      currentNode = currentNode.next
     }
-    deleteNode(currentNode);
+    deleteNode(currentNode)
   }
   private def deleteNode(nodeofDoubly: NodeofDoubly[T]) {
     if (nodeofDoubly != null) {
